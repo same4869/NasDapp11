@@ -654,6 +654,17 @@ span.mail a:hover{
 	font-family: 'Open Sans', sans-serif;
 	margin-bottom: 0.6em;
 }
+.span_1_of_first1 h3{
+	color: #060606;
+	text-transform: uppercase;
+	font-size: 2.0em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 0.6em;
+}
 .span_1_of_first1 {
 	width: 29.5%;
 }

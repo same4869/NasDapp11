@@ -17,6 +17,7 @@ var JiazhiNoteItem = function(text){
        this.content = obj.content; //帖子内容
        this.author = obj.author; //帖子作者
        this.fee = obj.fee; //帖子的价格
+       this.totleFee = obj.totleFee; //该帖子的总共收益
        this.ownedUserId = obj.ownedUserId; //购买该帖子的用户ID列表
     }
 };
@@ -38,6 +39,15 @@ var JiazhiUserItems = function () {
         }
     });
     LocalContractStorage.defineMapProperty(this, "notedata", {
+        parse: function (text) {
+            return new JiazhiNoteItem(text);
+        },
+        stringify: function (o) {
+            return JSON.stringify(o);
+        }
+    });
+    //除了不存content以外，其他跟notedata一样
+    LocalContractStorage.defineMapProperty(this, "notedatatemp", {
         parse: function (text) {
             return new JiazhiNoteItem(text);
         },
@@ -136,10 +146,14 @@ JiazhiUserItems.prototype ={
         jiazhiNoteItem.title = title;
         jiazhiNoteItem.fee = fee;
         jiazhiNoteItem.author = from;
-        jiazhiNoteItem.content = content;
         jiazhiNoteItem.ownedUserId.push(from);
+        jiazhiNoteItem.content = "您当前没有这篇文章的阅读权限，请购买后重试";
+        this.notedatatemp.put(id,jiazhiNoteItem);
 
+        jiazhiNoteItem.content = content;
+        
         this.notedata.put(id,jiazhiNoteItem);
+        
 
         this.size = this.size + 1
         LocalContractStorage.set("id", this.size);
@@ -159,13 +173,15 @@ JiazhiUserItems.prototype ={
             if(jiazhiUserItem.token < jiazhiNoteItem.fee){
                 throw new Error("余额不足，不能购买");
             }else{
+                jiazhiNoteItem.totleFee += jiazhiNoteItem.fee;
                 jiazhiUserItem.token -= jiazhiNoteItem.fee;
                 jiazhiNoteItem.ownedUserId.push(from);
             }
-
         }else{
             throw new Error("该帖子不存在")
         }
+
+        this.notedata.put(id,jiazhiNoteItem);
     },
 
     //获得所有帖子信息
@@ -173,9 +189,44 @@ JiazhiUserItems.prototype ={
         this.size = LocalContractStorage.get("id", this.size);
         var info = []
         for(var i = 0; i < this.size; i++){
-            info.push(this.notedata.get(i))
+            info.push(this.notedatatemp.get(i))
         }
         return info;
+    },
+
+    //根据ID拿到某一个文章的详细信息
+    getNoteInfoById:function(id){
+        if(!id){
+            throw new Error("empty id")
+        }
+        var from = Blockchain.transaction.from;
+        //权限二次检查
+        for(var i = 0; i < this.notedata.get(id).ownedUserId.length; i++){
+            if(this.notedata.get(id).ownedUserId[i] === from){
+                return this.notedata.get(id);
+            }
+        }
+        return this.notedatatemp.get(id);
+    },
+
+    //判断当前用户是否买了某篇文章
+    isCurUserPayed:function(id){
+        var from = Blockchain.transaction.from;
+        for(var i = 0; i < this.notedata.get(id).ownedUserId.length; i++){
+            if(this.notedata.get(id).ownedUserId[i] === from){
+                return true;
+            }
+        }
+        return false;
+    },
+
+    //判断是否有当前用户，没有则显示登录按钮引导登录
+    isCurUserLogin:function(){
+        var from = Blockchain.transaction.from;
+        if(this.userdata && this.userdata.get(from)){
+            return true;
+        }
+        return false;
     },
 
     //获得当前用户信息
