@@ -6,7 +6,7 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n1fJdzAougmnKDwFUwHw3R1TUxsFPkSqnm5";
+    dappContactAddress = "n1zSZpTG7mT3Rx3w42HTjXFUUxG6d1Lr1Gr";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
     
@@ -37,13 +37,14 @@ $(function () {
                 curWallectAdd = address;
                 console.log("address="+address);
                 $(".text-author").val(address);
+                getNoteInfoById(pageId);
             }
         }
     }
 
     function getNoteInfoById(pageId){
         console.log(pageId);
-        var from = dappContactAddress;
+        var from = curWallectAdd;
         var value = "0";
         var nonce = "0";
         var gas_price = "1000000";
@@ -109,6 +110,6 @@ $(function () {
     } 
 
     getWallectInfo();
-    getNoteInfoById(pageId);
+    
 
 })

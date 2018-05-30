@@ -114,6 +114,7 @@ JiazhiUserItems.prototype ={
         if(date === jiazhiUserItem.lastsign){
             throw new Error("每天只能签到一次~"); 
         }
+        jiazhiUserItem.lastsign = date;
         jiazhiUserItem.token += 100;
         this.userdata.put(from,jiazhiUserItem);
     },

@@ -4,7 +4,7 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n1fJdzAougmnKDwFUwHw3R1TUxsFPkSqnm5";
+    dappContactAddress = "n1zSZpTG7mT3Rx3w42HTjXFUUxG6d1Lr1Gr";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
     
@@ -33,6 +33,8 @@ $(function () {
                 var address = e.data.data.account;
                 curWallectAdd = address;
                 console.log("address="+address);
+                getCurUserInfo();
+                isCurUserLogin();
             }
         }
        
@@ -206,7 +208,7 @@ $(function () {
                         }
                     }catch(e){
                         var hash = resp.txhash;
-                        alert('购买中，请稍后');
+                        alert('购买中，请稍后，购买完成后将自动跳转到帖子详情');
                         regetTransactionReceipt(hash, function (status) {
                             if(status == 1){
                                 location.href="detail_page.html?page=" + id; 
@@ -253,8 +255,129 @@ $(function () {
     }) 
     }
 
+    function isCurUserLogin(){
+        var from = curWallectAdd;
+        var value = "0";
+        var nonce = "0";
+        var gas_price = "1000000";
+        var gas_limit = "20000000";
+        var callFunction = "isCurUserLogin";
+        var callArgs = "";
+        // console.log("callFunction:" + callFunction + " callArgs:" + callArgs);
+        var contract = {
+        "function": callFunction,
+        "args": callArgs
+        };
+    neb.api.call(from, dappContactAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+        var result = resp.result;   
+        console.log("getCurUserInfo result : " + result);
+        result = JSON.parse(result);
+        if(result){
+            $(".login_status").text("您当前已经登录");
+        }else{
+            $(".login_status").text("您还没有登录，没登录会影响正常使用，请点击永久登录按钮"); 
+        }
+
+    }).catch(function (err) {
+        console.log("error :" + err.message);
+    }) 
+    }
+
+    function getCurUserInfo(){
+        var from = curWallectAdd;
+        var value = "0";
+        var nonce = "0";
+        var gas_price = "1000000";
+        var gas_limit = "20000000";
+        var callFunction = "getCurUserInfo";
+        var callArgs = "";
+        // console.log("callFunction:" + callFunction + " callArgs:" + callArgs);
+        var contract = {
+        "function": callFunction,
+        "args": callArgs
+        };
+    neb.api.call(from, dappContactAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+        var result = resp.result;   
+        console.log("getCurUserInfo result : " + result);
+        result = JSON.parse(result);
+        $(".my_was").text("我的资产：" + result.token + "WAS");
+        $(".user_name").text(result.addr);
+
+    }).catch(function (err) {
+        console.log("error :" + err.message);
+    }) 
+    }
+
     $("#login_btn").on("click", function(event) {
         loginOrReg();
+    });
+
+    function signToday(date){
+        var to = dappContactAddress;
+        var value = "0";
+        var callFunction = "signToday";
+        var callArgs = "[\"" + date + "\"]";
+        console.log(callArgs);
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, { 
+                listener: function (resp) {
+                    try{
+                        if(resp.indexOf("Transaction rejected by user") > 0){
+                            alert("您拒绝了合约调用，请重试");
+                        }
+                    }catch(e){
+                        var hash = resp.txhash;
+                        alert('购买中，请稍后，购买完成后将自动跳转到帖子详情');
+                        regetTransactionReceipt(hash, function (status) {
+                            if(status == 1){
+                                alert('签到成功！');
+                            }else{
+                                alert('购买失败！');
+                            }
+                        })
+                    }
+                        //upadte card status into in progress...
+                }
+        }); 
+    }
+
+    $("#signin_btn").on("click", function(event) {
+        var myDate = new Date();
+        var day = myDate.getDate();
+        signToday(day);
+    });
+
+    function transferToken(toAddr,value){
+        var to = dappContactAddress;
+        var val = value;
+        var callFunction = "transferToken";
+        var callArgs = "[\"" + toAddr + "\",\"" + val + "\"]";
+        console.log(callArgs);
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, { 
+                listener: function (resp) {
+                    try{
+                        if(resp.indexOf("Transaction rejected by user") > 0){
+                            alert("您拒绝了合约调用，请重试");
+                        }
+                    }catch(e){
+                        var hash = resp.txhash;
+                        regetTransactionReceipt(hash, function (status) {
+                            if(status == 1){
+                                alert('转账成功');
+                            }else{
+                                alert('转账失败！');
+                            }
+                        })
+                    }
+                        //upadte card status into in progress...
+                }
+        }); 
+    }
+
+    $("#transfer_btn").on("click", function(event) {
+        var otherAddr = $(".trans_addr").val();
+        var num = $(".trans_num").val();
+        console.log("otherAddr : " + otherAddr + " num : " + num);
+        transferToken(otherAddr,num);
     });
 
     getAllNoteInfo();

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>星云价值社区</title>
+		<title>价值社区规则说明</title>
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
@@ -10,9 +10,6 @@
 		<!----webfonts---->
 		<!-- <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
 		<!----//webfonts---->
-		<!-- Global CSS for the page and tiles -->
-  		<link rel="stylesheet" href="css/main.css">
-  		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
         <!----start-dropdown--->
@@ -38,18 +35,6 @@
 			});
 		</script>
         <!----//End-dropdown--->
-		<!---//End-click-drop-down-menu----->
-		<style>
-		.loader {
-			position: fixed;
-			left: 0px;
-			top: 0px;
-			width: 100%;
-			height: 100%;
-			z-index: 9999;
-			background: url('images/loading.gif') 50% 50% no-repeat rgba(255, 255, 255);
-		}
-		</style> 
 	</head>
 	<body>
 		<!---start-wrap---->
@@ -83,18 +68,14 @@
 					</div> 
 				</div>       	  
 				<div class="top-searchbar">
-						<input class="trans_addr"  placeholder="别人的地址"/>
-						<input class="trans_num"  placeholder="转账数量"/>
-						<button id="transfer_btn" >转账给别人</button>
+					<form>
+						<input type="text" /><input type="submit" value="" />
+					</form>
 				</div>
-				<button id="login_btn" >永久登录</button>
-				<p class="login_status"></p>
-				<p class="my_was"></p>
-				<button id="signin_btn" >每日签到</button>
 				<div class="userinfo">
 					<div class="user">
 						<ul>
-							<li><img src="images/user-pic.png" title="user-name" /><p class="user_name">Ipsum</p></li>
+							<li><a href="#"><img src="images/user-pic.png" title="user-name" /><span>Ipsum</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -105,31 +86,23 @@
 		<!---start-content---->
 		<div class="content">
 			<div class="wrap">
-			 <div id="main" role="main">
-			      <ul id="tiles">
-			        <!-- These are our grid blocks -->
-			      </ul>
-			    </div>
-			</div>
-			<div id="loading" class="loader">
-			</div>
+			<div class="single-page">
+							<div class="single-page-artical" id="page-content">
+		  						 <div class="clear"> </div>
+							</div>
+						</div>
+						 </div>
 		</div>
-		<!---//End-content---->
-		<!----wookmark-scripts---->
-		  <script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
-		  <script src="js/jquery.imagesloaded.js"></script>
-		  <script src="js/jquery.wookmark.js"></script>
-		  <script type="text/javascript" src="./dist/nebulas.js"></script>
-		  <script type="text/javascript" src="./dist/nebPay.js"></script>
-		  
-		<script src="index.js"></script>
-		<!----//wookmark-scripts---->
 		<!----start-footer--->
 		<div class="footer">
 			<p>Copyright &copy; 2015.Company name All rights reserved.</p>
 		</div>
 		<!----//End-footer--->
 		<!---//End-wrap---->
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="./dist/nebulas.js"></script>
+		<script type="text/javascript" src="./dist/nebPay.js"></script>
+		<script src="detail_page.js"></script>
 	</body>
 </html>
 
