@@ -273,9 +273,11 @@ $(function () {
         console.log("getCurUserInfo result : " + result);
         result = JSON.parse(result);
         if(result){
-            $(".login_status").text("您当前已经登录");
+            //$(".login_status").text("您当前已经登录");
+            $(".login_status").html("您当前已经登录");
         }else{
-            $(".login_status").text("您还没有登录，没登录会影响正常使用，请点击永久登录按钮"); 
+            //$(".login_status").text("请先使用星云链钱包在本系统中注册，才可正常使用系统中功能哦！"); 
+            $(".login_status").html("请先使用<a href='https://nebulas.io/' target='_blank'>星云链钱包</a>在价值社区注册，才可正常使用社区中功能哦！")
         }
 
     }).catch(function (err) {
@@ -372,6 +374,9 @@ $(function () {
                 }
         }); 
     }
+    $(".trans_num").keyup(function () { 
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
 
     $("#transfer_btn").on("click", function(event) {
         var otherAddr = $(".trans_addr").val();
