@@ -5,6 +5,7 @@
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+		<link rel="stylesheet" href="css/main.css">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
 		<!----webfonts---->
@@ -40,13 +41,12 @@
 		<!---start-wrap---->
 			<!---start-header---->
 			<div class="header">
-				<div class="wrap">
+				<div class="nav-icon">
+					<a href="#" class="right_bt" id="activator"><span> </span> </a>
+				</div>
 				<div class="logo">
 					<a href="index.html"><img src="images/logo.png" title="pinbal" /></a>
-				</div>
-				<div class="nav-icon">
-					 <a href="#" class="right_bt" id="activator"><span> </span> </a>
-				</div>
+				</div>	
 				 <div class="box" id="box">
 					 <div class="box_content">        					                         
 						<div class="box_content_center">
@@ -57,8 +57,8 @@
 										<li><a href="add_new_note.html"><span>发布价值讯息</span></a></li>
 										<li><a href="rule_page.html"><span>规则说明(必读)</span></a></li>
 										<li><a href="https://nebulas.io/"><span>星云链官方网站</span></a></li>
-										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<li><a href="https://github.com/ChengOrangeJu/WebExtensionWallet"><span>web钱包插件</span></a></li>
+										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<div class="clear"> </div>
 									</ul>
 								</div>
@@ -67,17 +67,9 @@
 						</div> 	
 					</div> 
 				</div>       	  
-				<div class="top-searchbar">
-					<form>
-						<input type="text" /><input type="submit" value="" />
-					</form>
-				</div>
 				<div class="userinfo">
-					<div class="user">
-						<ul>
-							<li><a href="#"><img src="images/user-pic.png" title="user-name" /><span>Ipsum</span></a></li>
-						</ul>
-					</div>
+					<img src="images/user-pic.png" title="user-name" />
+					<p class="user_name">Ipsum</p>
 				</div>
 				<div class="clear"> </div>
 			</div>
@@ -88,19 +80,20 @@
 			<div class="wrap">
 			<div class="single-page">
 							<div class="single-page-artical" id="page-content">
-                                总体介绍
-                                星云价值社区是一个基于星云链的社区平台，鼓励所有用户在该平台发布有价值的资讯，并获得一定的回报。
-
-                                平台规则
-                                平台拥有自己的代币系统WAS（致敬星云链NAS），每位首次登陆（一个用户永久只需要登陆一次）会获赠100WAS，代币用于购买平台内的文章内容查看权限（每篇文章只需要购买一次），购买后可以随时浏览对应文章。
-                                平台WAS支持每日登陆领取（每日一次，一次100WAS），并支持用户之间平台内转账。
-                                用户在发布价值文章时除了题目与内容等基本属性外还可以定义该文章的单价，每篇文章详情里显示该文章的总体收入。
-
-                                安全措施
-                                合约内对帖子购买进行多重二次校验，避免用户通过更改URL来试图查看未购买文章的内容，以免损坏遵守规则用户的利益。
-                                用户平台内转账只有双方地址都在平台类一键登录后方可转账成功，防止错误转账导致代币丢失。
-
-
+								<div>总体介绍</div>
+                                <p>星云价值社区是一个基于星云链的社区平台，鼓励所有用户在该平台发布有价值的资讯，并获得一定的回报。</p>
+                                
+								<div>平台规则</div>
+                                <p>
+									平台拥有自己的代币系统WAS（致敬星云链NAS），每位首次登陆（一个用户永久只需要登陆一次）会获赠100WAS，代币用于购买平台内的文章内容查看权限（每篇文章只需要购买一次），购买后可以随时浏览对应文章。
+										平台WAS支持每日登陆领取（每日一次，一次100WAS），并支持用户之间平台内转账。
+								</p>
+								<p>
+									用户在发布价值文章时除了题目与内容等基本属性外还可以定义该文章的单价，每篇文章详情里显示该文章的总体收入。
+								</p>
+                                <div>安全措施</div>
+                                <p>合约内对帖子购买进行多重二次校验，避免用户通过更改URL来试图查看未购买文章的内容，以免损坏遵守规则用户的利益。
+										用户平台内转账只有双方地址都在平台类一键登录后方可转账成功，防止错误转账导致代币丢失。</p>
 		  						 <div class="clear"> </div>
 							</div>
 						</div>

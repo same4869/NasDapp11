@@ -4,7 +4,7 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n1zSZpTG7mT3Rx3w42HTjXFUUxG6d1Lr1Gr";
+    dappContactAddress = "n21L9PvnfSweBba1MjjZfWjp2F5UDZruj4F";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
     
@@ -118,26 +118,23 @@ $(function () {
         console.log(itemList);
         var html = "";
         for(var i = 0, iLen = itemList.length; i < iLen; i++) {
-            randomIndex = (i + 1) % 4;
+            randomIndex = (i + 1) % 7;
             // var i = Math.random();
             // var randomIndex = Math.ceil(i*30);
             console.log("randomIndex:" + randomIndex);
             // randomIndex = 1;
             html += 
             '<li class="card_info_li" id=' + i + '>' + 
-            '<img src="images/img' + randomIndex + '.jpg" width="200" height="200">' + 
+            '<img src="images/xingyun' + randomIndex + '.png"' + 
             '<div class="post-info">' + 
                 '<div class="post-basic-info">' + 
                     '<h3>' + itemList[i].title + '</h3>' +
                     '<span><label> </label>文章价格：' + itemList[i].fee + '</span>' + 
-                    '<p>' + itemList[i].content + '</p>' + 
+                    '<p>点击卡片，展开阅读帖子内容</p>' + 
                 '</div>' + 
                 '<div class="post-info-rate-share">' + 
                     '<div class="rateit_totle">' + 
                         '<span> 购买人数：' + itemList[i].ownedUserId.length + '</span>' + 
-                    '</div>' + 
-                    '<div class="post-share">' + 
-                        '<span> </span>' + 
                     '</div>' + 
                     '<div class="clear"> </div>' + 
                 '</div>' + 

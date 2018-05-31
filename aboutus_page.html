@@ -5,6 +5,7 @@
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+		<link rel="stylesheet" href="css/main.css">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
 		<!----webfonts---->
@@ -40,12 +41,11 @@
 		<!---start-wrap---->
 			<!---start-header---->
 			<div class="header">
-				<div class="wrap">
+				<div class="nav-icon">
+					<a href="#" class="right_bt" id="activator"><span> </span> </a>
+				</div>
 				<div class="logo">
 					<a href="index.html"><img src="images/logo.png" title="pinbal" /></a>
-				</div>
-				<div class="nav-icon">
-					 <a href="#" class="right_bt" id="activator"><span> </span> </a>
 				</div>
 				 <div class="box" id="box">
 					 <div class="box_content">        					                         
@@ -57,8 +57,8 @@
 										<li><a href="add_new_note.html"><span>发布价值讯息</span></a></li>
 										<li><a href="rule_page.html"><span>规则说明(必读)</span></a></li>
 										<li><a href="https://nebulas.io/"><span>星云链官方网站</span></a></li>
-										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<li><a href="https://github.com/ChengOrangeJu/WebExtensionWallet"><span>web钱包插件</span></a></li>
+										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<div class="clear"> </div>
 									</ul>
 								</div>
@@ -67,38 +67,22 @@
 						</div> 	
 					</div> 
 				</div>       	  
-				<div class="top-searchbar">
-					<form>
-						<input type="text" /><input type="submit" value="" />
-					</form>
-				</div>
 				<div class="userinfo">
-					<div class="user">
-						<ul>
-							<li><a href="#"><img src="images/user-pic.png" title="user-name" /><span>Ipsum</span></a></li>
-						</ul>
-					</div>
+					<img src="images/user-pic.png" title="user-name" />
+					<p class="user_name">Ipsum</p>
 				</div>
 				<div class="clear"> </div>
 			</div>
 		</div>
-		<!---//End-header---->
-		<!---start-content---->
-		<div class="content">
-			<div class="wrap">
-			<div class="single-page">
-							<div class="single-page-artical" id="page-content">
-		  						 <div class="clear"> </div>
-							</div>
-						</div>
-						 </div>
+		<div class="about-us-wrapper">
+			<div class="about-us">
+				<span style="text-align: center; padding-top: 20px;">
+					<img src="images/us.jpeg" style="width: 400px">
+					<img src="images/xingyun.png">
+				</span>
+			</div>
+			<p>same-flower工作小组是一个区块链应用开发兴趣小组，致力于开发出更多更优质的DAPP，欢迎大家提宝贵意见和建议，联系方式：same4869@163.com</p>
 		</div>
-		<!----start-footer--->
-		<div class="footer">
-			<p>Copyright &copy; 2015.Company name All rights reserved.</p>
-		</div>
-		<!----//End-footer--->
-		<!---//End-wrap---->
 		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
 		<script type="text/javascript" src="./dist/nebulas.js"></script>
 		<script type="text/javascript" src="./dist/nebPay.js"></script>

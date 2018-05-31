@@ -44,12 +44,11 @@
 		<!---start-wrap---->
 			<!---start-header---->
 			<div class="header">
-				<div class="wrap">
+				<div class="nav-icon">
+					<a href="#" class="right_bt" id="activator"><span> </span> </a>
+				</div>
 				<div class="logo">
 					<a href="index.html"><img src="images/logo.png" title="pinbal" /></a>
-				</div>
-				<div class="nav-icon">
-					 <a href="#" class="right_bt" id="activator"><span> </span> </a>
 				</div>
 				 <div class="box" id="box">
 					 <div class="box_content">        					                         
@@ -61,8 +60,8 @@
 										<li><a href="add_new_note.html"><span>发布价值讯息</span></a></li>
 										<li><a href="rule_page.html"><span>规则说明(必读)</span></a></li>
 										<li><a href="https://nebulas.io/"><span>星云链官方网站</span></a></li>
-										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<li><a href="https://github.com/ChengOrangeJu/WebExtensionWallet"><span>web钱包插件</span></a></li>
+										<li><a href="aboutus_page.html"><span>关于我们</span></a></li>
 										<div class="clear"> </div>
 									</ul>
 								</div>
@@ -71,17 +70,9 @@
 						</div> 	
 					</div> 
 				</div>       	  
-				<div class="top-searchbar">
-					<form>
-						<input type="text" /><input type="submit" value="" />
-					</form>
-				</div>
 				<div class="userinfo">
-					<div class="user">
-						<ul>
-							<li><a href="#"><img src="images/user-pic.png" title="user-name" /><span>Ipsum</span></a></li>
-						</ul>
-					</div>
+					<img src="images/user-pic.png" title="user-name" />
+					<p class="user_name">Ipsum</p>
 				</div>
 				<div class="clear"> </div>
 			</div>
@@ -134,14 +125,14 @@
 							 	<div>
 							          <div class="contact-form">
 										<div class="contact-to">
-					                     	<input type="text" class="text-title" value="title..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '文章标题...';}">
+					                     	<input type="text" class="text-title" value="文章标题..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '文章标题...';}">
 										 	<input type="text" class="text-author" disabled>
-										 	<input type="text" class="text-fee" value="fee..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写1-99999之间的整数...';}">
+										 	<input type="text" class="text-fee" value="定价..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写1-99999之间的整数...';}">
 										</div>
 										<div class="text2">
-						                   <textarea class="text-content" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '文章内容...';}">Message..</textarea>
+						                   <textarea class="text-content" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '文章内容...';}">文章内容...</textarea>
 						                </div>
-						               <span><input type="submit" class="submit_btn" value="Submit"></span>
+						               <span><input type="submit" class="submit_btn" value="提交"></span>
 						                <div class="clear"></div>
 						               </div>
 									</div>

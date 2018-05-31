@@ -6,7 +6,7 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n1zSZpTG7mT3Rx3w42HTjXFUUxG6d1Lr1Gr";
+    dappContactAddress = "n21L9PvnfSweBba1MjjZfWjp2F5UDZruj4F";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
     
@@ -65,31 +65,15 @@ $(function () {
             console.log("id : " + id, "pageId:" + pageId);
             for( var i = 0; i < result.ownedUserId.length; i++) {
                 otherListHtml += '<div class="bottom-item">' +
-                                    '<span class="user f-right">购买者 <a href="#">'+result.ownedUserId[i]+'</a></span>' +
+                                    '<span class="user f-right">购买者: '+result.ownedUserId[i]+'</span>' +
                                 '</div>' ;
-            }
-            // html = '<div class="container">' +
-            //             '<center><article>' +
-            //                 '<a class="example-image-link" href="images/'+ id +'.jpg" data-lightbox="example-set" data-title=""><img class="example-image" src="images/'+id+'.jpg" alt=""/></a>' +
-            //                 '<div class="content-item">' +
-            //                     '<h3 class="title-item"><a href="#">'+result.title+'</a></h3>' +
-            //                     '<div class="time"> '+result.fee+'</div>' +
-            //                     '<p class="info">'+result.content+'</p>' +
-            //                 '</div>' +
-            //                 '<div class="bottom-item">' +
-            //                     '<a class="btn btn-share share" id="join">我要参加</a>' +
-            //                     '<span class="user f-right">发起者： <a href="#">'+result.author+'</a><img src="images/ava-1.jpg"></span>' +
-            //                 '</div>' +
-            //                 otherListHtml +
-            //             '</article></center>' +
-            //         '</div>';
-            
+            }            
             if(result.totleFee === undefined){
                 result.totleFee = 0;
             }
 
             html = 	'<div class="artical-content">' + 
-            '<h3>' + result.title + '</h3>' + 
+            '<span style="font-size: 30px;">' + result.title + '</span>' + 
             '<p>此文章价值单价：' + result.fee + ' WAS 总收益：' + result.totleFee + ' WAS</p>' + 
             '<p>' + result.content + '</p>' + 
             '</div>' + 
