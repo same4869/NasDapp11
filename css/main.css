@@ -160,6 +160,7 @@ footer a {
   font-size: 12px;
   font-weight: bold;
   color: maroon;
+  cursor: pointer;
 }
 .login_status {
   position: absolute;
@@ -182,6 +183,7 @@ footer a {
   margin-top: 5px;
   position: relative;
   margin-right: 10px;
+  cursor: pointer;
 }
 .trans_addr {
   height: 25px;
@@ -200,4 +202,5 @@ footer a {
   margin-top: 5px;
   position: relative;
   margin-right: 10px;
+  cursor: pointer;
 }

@@ -275,9 +275,13 @@ $(function () {
         if(result){
             //$(".login_status").text("您当前已经登录");
             $(".login_status").html("您当前已经登录");
+            $("#login_btn").css("display", "none");
         }else{
             //$(".login_status").text("请先使用星云链钱包在本系统中注册，才可正常使用系统中功能哦！"); 
-            $(".login_status").html("请先使用<a href='https://nebulas.io/' target='_blank'>星云链钱包</a>在价值社区注册，才可正常使用社区中功能哦！")
+            $(".login_status").html("请先使用<a href='https://nebulas.io/' target='_blank'>星云链钱包</a>在价值社区注册，才可正常使用社区中功能哦！");
+            $(".qiandao-content").css("display", "none");
+            $(".userinfo").css("display", "none");
+
         }
 
     }).catch(function (err) {
