@@ -174,7 +174,10 @@ JiazhiUserItems.prototype ={
             if(jiazhiUserItem.token < jiazhiNoteItem.fee){
                 throw new Error("余额不足，不能购买");
             }else{
-                jiazhiNoteItem.totleFee += jiazhiNoteItem.fee;
+                if(jiazhiNoteItem.totleFee === undefined){
+                    jiazhiNoteItem.totleFee = 0;
+                }
+                jiazhiNoteItem.totleFee += parseInt(jiazhiNoteItem.fee);
                 jiazhiUserItem.token -= jiazhiNoteItem.fee;
                 jiazhiNoteItem.ownedUserId.push(from);
             }

@@ -36,7 +36,7 @@ $(function () {
                 var address = e.data.data.account;
                 curWallectAdd = address;
                 console.log("address="+address);
-                $(".text-author").val(address);
+                $(".user_name").html(address);
                 getNoteInfoById(pageId);
             }
         }
@@ -65,7 +65,7 @@ $(function () {
             console.log("id : " + id, "pageId:" + pageId);
             for( var i = 0; i < result.ownedUserId.length; i++) {
                 otherListHtml += '<div class="bottom-item">' +
-                                    '<span class="user f-right">参与者： <a href="#">'+result.ownedUserId[i]+'</a><img src="images/ava-1.jpg"></span>' +
+                                    '<span class="user f-right">购买者 <a href="#">'+result.ownedUserId[i]+'</a></span>' +
                                 '</div>' ;
             }
             // html = '<div class="container">' +
@@ -89,18 +89,11 @@ $(function () {
             }
 
             html = 	'<div class="artical-content">' + 
-            '<img src="images/single-post-pic.jpg" title="banner1">' + 
             '<h3>' + result.title + '</h3>' + 
             '<p>此文章价值单价：' + result.fee + ' WAS 总收益：' + result.totleFee + ' WAS</p>' + 
             '<p>' + result.content + '</p>' + 
             '</div>' + 
-            '<div class="artical-links">' + 
-               '<ul>' + 
-                   '<li><img src="images/blog-icon2.png" title="Admin"><span>admin</span></a></li>' + 
-                   '<li><img src="images/blog-icon3.png" title="Comments"><span>No comments</span></a></li>' + 
-                   '<li><img src="images/blog-icon4.png" title="Lables"><span>View posts</span></a></li>' + 
-               '</ul>' + 
-          '</div>' + otherListHtml;
+            otherListHtml;
             console.log(html);
             $("#page-content").append(html);
         
