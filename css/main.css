@@ -214,6 +214,17 @@ footer a {
 }
 .single-page-artical p {
   margin: 20px 20px;
+  color: grey;
+}
+.single-page-artical p strong {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: black;
+}
+.was-jiangli {
+  padding: 20px;
+  list-style-type: disc;
 }
 .about-us {
   width: 680px;
