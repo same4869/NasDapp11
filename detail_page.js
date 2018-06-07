@@ -6,9 +6,9 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n21L9PvnfSweBba1MjjZfWjp2F5UDZruj4F";
+    dappContactAddress = "n1vi9m7S8Faii7oGp93LBTAZgE8tpAZrGcv";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
-    neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
     
     NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
     nebPay = new NebPay();	

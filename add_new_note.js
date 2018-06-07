@@ -4,9 +4,9 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n21L9PvnfSweBba1MjjZfWjp2F5UDZruj4F";
+    dappContactAddress = "n1vi9m7S8Faii7oGp93LBTAZgE8tpAZrGcv";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
-    neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
     
     NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
     nebPay = new NebPay();	
@@ -51,7 +51,7 @@ $(function () {
         var value = "0";
         var callFunction = "addANewNote";
         var callArgs = "[\"" + title + "\",\"" + content + "\",\"" + fee + "\"]";
-        console.log(callArgs);
+        console.log("addANewNote : " + callArgs);
         serialNumber = nebPay.call(to, value, callFunction, callArgs, { 
                 listener: function (resp) {
                     try{
@@ -93,7 +93,7 @@ $(function () {
     }
 
     function getTransactionReceipt(hash, cb){
-        $.post('https://testnet.nebulas.io/v1/user/getTransactionReceipt', JSON.stringify({
+        $.post('https://mainnet.nebulas.io/v1/user/getTransactionReceipt', JSON.stringify({
             "hash": hash
         }), function (resp) {
             console.log(resp);

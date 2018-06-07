@@ -4,9 +4,9 @@ $(function () {
     var NebPay;
     var nebPay;
     var nebulas;
-    dappContactAddress = "n21L9PvnfSweBba1MjjZfWjp2F5UDZruj4F";
+    dappContactAddress = "n1vi9m7S8Faii7oGp93LBTAZgE8tpAZrGcv";
     nebulas = require("nebulas"), neb = new nebulas.Neb();
-    neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
     
     NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
     nebPay = new NebPay();	
@@ -83,7 +83,7 @@ $(function () {
     }
 
     function getTransactionReceipt(hash, cb){
-        $.post('https://testnet.nebulas.io/v1/user/getTransactionReceipt', JSON.stringify({
+        $.post('https://mainnet.nebulas.io/v1/user/getTransactionReceipt', JSON.stringify({
             "hash": hash
         }), function (resp) {
             console.log(resp);
@@ -123,13 +123,16 @@ $(function () {
             // var randomIndex = Math.ceil(i*30);
             console.log("randomIndex:" + randomIndex);
             // randomIndex = 1;
+            if(itemList[i].fee.indexOf("请填写") >= 0){
+                itemList[i].fee = 0;
+            }
             html += 
             '<li class="card_info_li" id=' + i + '>' + 
             '<img src="images/xingyun' + randomIndex + '.png"' + 
             '<div class="post-info">' + 
                 '<div class="post-basic-info">' + 
                     '<h3>' + itemList[i].title + '</h3>' +
-                    '<span><label> </label>文章价格：' + itemList[i].fee + '</span>' + 
+                    '<span><label> </label>文章价格：' + itemList[i].fee + 'WAS</span>' + 
                     '<p>点击卡片，展开阅读帖子内容</p>' + 
                 '</div>' + 
                 '<div class="post-info-rate-share">' + 
@@ -329,12 +332,11 @@ $(function () {
                         }
                     }catch(e){
                         var hash = resp.txhash;
-                        alert('购买中，请稍后，购买完成后将自动跳转到帖子详情');
                         regetTransactionReceipt(hash, function (status) {
                             if(status == 1){
                                 alert('签到成功！');
                             }else{
-                                alert('购买失败！');
+                                alert('签到失败！');
                             }
                         })
                     }

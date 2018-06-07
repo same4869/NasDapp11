@@ -178,6 +178,10 @@ JiazhiUserItems.prototype ={
                     jiazhiNoteItem.totleFee = 0;
                 }
                 jiazhiNoteItem.totleFee += parseInt(jiazhiNoteItem.fee);
+
+                var jiazhiUserItem = this.userdata.get(jiazhiUserItem.author);
+                this.userdata.put(jiazhiUserItem.author,jiazhiUserItem);
+                
                 jiazhiUserItem.token -= jiazhiNoteItem.fee;
                 jiazhiNoteItem.ownedUserId.push(from);
             }
